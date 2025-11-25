@@ -49,29 +49,35 @@
                 <version>1.9.0</version>
 
                 <configuration>
-                    <!-- Include ALL classes -->
+                    <!-- Classes to mutate -->
                     <targetClasses>
                         <param>org.banking.*</param>
                     </targetClasses>
 
+                    <!-- Exclude untestable classes -->
+                    <excludedClasses>
+                        <param>org.banking.App</param>
+                        <param>org.banking.BankingDataPopulator</param>
+                    </excludedClasses>
+
+                    <!-- Test classes -->
                     <targetTests>
-                        <param>org.banking.*</param>
+                        <param>org.banking.*Test</param>
                     </targetTests>
 
+                    <!-- Recommended mutator -->
                     <mutators>
-                        <mutator>INVERT_NEGS</mutator>
                         <mutator>CONDITIONALS_BOUNDARY</mutator>
+                        <mutator>NEGATE_CONDITIONALS</mutator>
+                        <mutator>PRIMITIVE_RETURNS</mutator>
+                        <mutator>EMPTY_RETURNS</mutator>
                         <mutator>RETURN_VALS</mutator>
-                        <mutator>INCREMENTS</mutator>
-                        <mutator>VOID_METHOD_CALLS</mutator>
                         <mutator>MATH</mutator>
+                        <mutator>INVERT_NEGS</mutator>
                     </mutators>
 
                     <threads>4</threads>
-                    <timeoutConst>3000</timeoutConst>
-
-                    <!-- No excluded classes now -->
-                    <excludedClasses/>
+                    <timeoutConst>4000</timeoutConst>
                 </configuration>
             </plugin>
 

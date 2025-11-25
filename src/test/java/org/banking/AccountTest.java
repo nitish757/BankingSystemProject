@@ -141,5 +141,46 @@ public class AccountTest {
     public void testToStringContainsAccountNumber() {
         String s = account.toString();
         assertTrue(s.contains("1234567890"));
+ 
+    }
+
+
+     // -----------------------------
+    // transfer: inactive source
+    // -----------------------------
+    @Test
+    public void testTransferFailsWhenSourceInactive() {
+        Account target = new Account("2000000000", "CHECKING", 500, 2);
+        account.deactivateAccount();
+        assertFalse(account.transfer(target, 100));
+    }
+
+    // -----------------------------
+    // transfer: inactive target
+    // -----------------------------
+    @Test
+    public void testTransferFailsWhenTargetInactive() {
+        Account target = new Account("2000000000", "CHECKING", 500, 2);
+        target.deactivateAccount();
+        assertFalse(account.transfer(target, 100));
+    }
+
+    // -----------------------------
+    // deposit should work after reactivation
+    // -----------------------------
+    @Test
+    public void testActivateAccountRestoresDeposits() {
+        account.deactivateAccount();
+        account.activateAccount();
+        assertTrue(account.deposit(50));
+    }
+
+    // -----------------------------
+    // interest on negative balance
+    // -----------------------------
+    @Test
+    public void testCalculateInterestZeroOrNegativeBalance() {
+        Account a = new Account("300", "SAVINGS", 0, 1);
+        assertEquals(0, a.calculateInterest(), 0.001);
     }
 }

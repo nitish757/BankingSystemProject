@@ -99,4 +99,25 @@ public class CustomerTest {
         assertTrue(s.contains("John"));
         assertTrue(s.contains("Doe"));
     }
+
+
+     @Test
+    public void testTotalBalanceOnlyCountsActiveAccounts() {
+Account a1 = new Account("A1", "SAVINGS", 500, 100L);
+Account a2 = new Account("A2", "SAVINGS", 500, 100L);
+
+        customer.addAccount(a1);
+        customer.addAccount(a2);
+
+        a2.deactivateAccount();  // should not count
+
+        assertEquals(500.0, customer.getTotalBalance(), 0.001);
+    }
+
+    @Test
+    public void testVerifyCustomerNullFieldsFail() {
+        assertFalse(customer.verifyCustomer(null, null));
+        assertFalse(customer.verifyCustomer("x", null));
+        assertFalse(customer.verifyCustomer(null, "y"));
+    }
 }

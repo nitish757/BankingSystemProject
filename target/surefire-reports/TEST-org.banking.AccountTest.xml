@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.banking.CustomerTest" time="0.009" tests="14" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.banking.AccountTest" time="0.03" tests="23" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -52,18 +52,27 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testTotalBalanceOnlyCountsActiveAccounts" classname="org.banking.CustomerTest" time="0"/>
-  <testcase name="testGetAccount" classname="org.banking.CustomerTest" time="0"/>
-  <testcase name="testAddDuplicateAccount" classname="org.banking.CustomerTest" time="0"/>
-  <testcase name="testVerifyCustomerSuccess" classname="org.banking.CustomerTest" time="0"/>
-  <testcase name="testToStringContainsName" classname="org.banking.CustomerTest" time="0"/>
-  <testcase name="testAddNullAccount" classname="org.banking.CustomerTest" time="0.001"/>
-  <testcase name="testAddValidAccount" classname="org.banking.CustomerTest" time="0"/>
-  <testcase name="testAddAccountWithWrongCustomerId" classname="org.banking.CustomerTest" time="0"/>
-  <testcase name="testVerifyCustomerNullFieldsFail" classname="org.banking.CustomerTest" time="0.001"/>
-  <testcase name="testVerifyCustomerFail" classname="org.banking.CustomerTest" time="0.001"/>
-  <testcase name="testGetTotalBalance" classname="org.banking.CustomerTest" time="0"/>
-  <testcase name="testGetActiveAccounts" classname="org.banking.CustomerTest" time="0"/>
-  <testcase name="testRemoveAccount" classname="org.banking.CustomerTest" time="0.001"/>
-  <testcase name="testGetAccountBalance" classname="org.banking.CustomerTest" time="0"/>
+  <testcase name="testCalculateInterestInactive" classname="org.banking.AccountTest" time="0.006"/>
+  <testcase name="testTransferToNullAccount" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testWithdrawNegative" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testActivateAccountRestoresDeposits" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testDepositInactiveAccount" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testDeactivateAndActivate" classname="org.banking.AccountTest" time="0.001"/>
+  <testcase name="testApplyMonthlyChargeValid" classname="org.banking.AccountTest" time="0.004"/>
+  <testcase name="testWithdrawAboveMinimum" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testWithdrawAtMinimumAllowed" classname="org.banking.AccountTest" time="0.001"/>
+  <testcase name="testTransferValid" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testDepositZeroAmount" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testWithdrawBelowMinimum" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testDepositNegativeAmount" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testGetTransactionHistory" classname="org.banking.AccountTest" time="0.001"/>
+  <testcase name="testTransferInsufficientAfterMinBalance" classname="org.banking.AccountTest" time="0.001"/>
+  <testcase name="testTransferFailsWhenTargetInactive" classname="org.banking.AccountTest" time="0.006"/>
+  <testcase name="testDepositPositiveAmount" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testTransferFailsWhenSourceInactive" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testGetTransactionHistoryLastN" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testCalculateInterestZeroOrNegativeBalance" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testApplyMonthlyChargeExceedsBalance" classname="org.banking.AccountTest" time="0.003"/>
+  <testcase name="testToStringContainsAccountNumber" classname="org.banking.AccountTest" time="0"/>
+  <testcase name="testCalculateInterest" classname="org.banking.AccountTest" time="0"/>
 </testsuite>

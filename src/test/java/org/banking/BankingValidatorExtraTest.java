@@ -97,4 +97,6 @@ public class BankingValidatorExtraTest {
     public void testCustomerIdValid() {
         assertTrue(BankingValidator.isValidCustomerId(12345));
     }
+
+    
 }

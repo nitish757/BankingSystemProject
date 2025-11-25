@@ -119,4 +119,97 @@ public class BankingServiceTest {
         assertEquals(2, service.getTotalAccounts());
         assertEquals(900.0, service.getTotalCustomerBalance(1001L) + service.getTotalCustomerBalance(1002L), 0.001);
     }
+    // -----------------------------
+    // CREATE ACCOUNT edge cases
+    // -----------------------------
+    @Test
+    public void testCreateAccountInvalidTypeNull() {
+        assertFalse(service.createAccount(1L, "1111111111", null, 500));
+    }
+
+    @Test
+    public void testCreateAccountInvalidTypeLowerCase() {
+        assertFalse(service.createAccount(1L, "1111111111", "savings", 500));
+    }
+
+    @Test
+    public void testCreateAccountZeroBalanceFails() {
+        assertFalse(service.createAccount(1L, "1111111111", "SAVINGS", 0));
+    }
+
+//    @Test
+// public void testCreateCreditAccountSetsInterestRate() {
+//     service.createAccount(1L, "C1", "CREDIT", 1000);
+//     Account acc = service.getCustomer(1L).getAccount("C1");
+//     assertEquals(0.15, acc.getInterestRate(), 0.001);
+// }
+    // -----------------------------
+    // PROCESS TRANSACTION
+    // -----------------------------
+    @Test
+    public void testProcessTransactionInvalidType() {
+        service.createAccount(1L, "A1", "SAVINGS", 1000);
+        assertFalse(service.processTransaction(1L, "A1", "INVALID_OP", 100));
+    }
+
+    // -----------------------------
+    // TRANSFER FUNDS missing conditions
+    // -----------------------------
+//    @Test
+// public void testTransferFailsWhenSourceInactive() {
+//     service.createAccount(1L, "A1", "SAVINGS", 2000);
+//     service.createAccount(2L, "B1", "CHECKING", 1000);
+
+//     c1.getAccount("A1").deactivateAccount();  
+//     assertFalse(service.transferFunds(1L, "A1", 2L, "B1", 500));
+// }
+
+// @Test
+// public void testTransferFailsWhenTargetInactive() {
+//     service.createAccount(1L, "A1", "SAVINGS", 2000);
+//     service.createAccount(2L, "B1", "CHECKING", 1000);
+
+//     c2.getAccount("B1").deactivateAccount();
+//     assertFalse(service.transferFunds(1L, "A1", 2L, "B1", 500));
+// }
+
+    // -----------------------------
+    // APPLY INTEREST edge cases
+    // -----------------------------
+    @Test
+    public void testApplyInterestZeroBalance() {
+        service.createAccount(1L, "A1", "SAVINGS", 0);
+        assertFalse(service.applyInterest(1L, "A1"));
+    }
+
+// @Test
+// public void testApplyInterestInactiveAccount() {
+//     service.createAccount(1L, "A1", "SAVINGS", 1000);
+//     c1.getAccount("A1").deactivateAccount();
+//     assertFalse(service.applyInterest(1L, "A1"));
+// }
+
+    // -----------------------------
+    // CLOSE ACCOUNT new mutation-killers
+    // -----------------------------
+    @Test
+    public void testCloseAccountNonExisting() {
+        assertFalse(service.closeAccount(1L, "NO_ACC"));
+    }
+
+    @Test
+    public void testCloseAccountFailsIfCustomerMissing() {
+        assertFalse(service.closeAccount(999L, "A1"));
+    }
+
+    // -----------------------------
+    // LIMIT setters mutants
+    // -----------------------------
+    @Test
+    public void testSetMonthlyWithdrawalLimitRejectsZero() {
+        double old = service.getMonthlyWithdrawalLimit();
+        service.setMonthlyWithdrawalLimit(0);
+        assertEquals(old, service.getMonthlyWithdrawalLimit(), 0.001);
+    }
+
 }

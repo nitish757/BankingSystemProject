@@ -5,6 +5,7 @@
 /home/nitish/Documents/TestingProjects/BankingSystemProject/src/test/java/org/banking/TransactionTest.java
 /home/nitish/Documents/TestingProjects/BankingSystemProject/src/test/java/org/banking/AccountTest.java
 /home/nitish/Documents/TestingProjects/BankingSystemProject/src/test/java/org/banking/BankingCLITest.java
-/home/nitish/Documents/TestingProjects/BankingSystemProject/src/test/java/org/banking/AppMainTest.java
+/home/nitish/Documents/TestingProjects/BankingSystemProject/src/test/java/org/banking/BankingCLITransactionsTest.java
 /home/nitish/Documents/TestingProjects/BankingSystemProject/src/test/java/org/banking/BankingFilesExtraTest.java
+/home/nitish/Documents/TestingProjects/BankingSystemProject/src/test/java/org/banking/BankingCLIInvalidInputTest.java
 /home/nitish/Documents/TestingProjects/BankingSystemProject/src/test/java/org/banking/BankingFilesTest.java
