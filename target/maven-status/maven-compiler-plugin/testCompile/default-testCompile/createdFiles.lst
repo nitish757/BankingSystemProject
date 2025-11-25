@@ -1,0 +1,10 @@
+org/banking/BankingFilesExtraTest.class
+org/banking/TransactionTest.class
+org/banking/AccountTest.class
+org/banking/BankingValidatorExtraTest.class
+org/banking/BankingValidatorTest.class
+org/banking/CustomerTest.class
+org/banking/BankingCLITest.class
+org/banking/BankingServiceTest.class
+org/banking/BankingFilesTest.class
+org/banking/AppMainTest.class

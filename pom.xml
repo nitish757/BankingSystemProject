@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.banking</groupId>
+    <artifactId>BankingSystemProject</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- JUnit 4 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.11.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- Surefire Plugin -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.1</version>
+            </plugin>
+
+            <!-- PIT Mutation Testing -->
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.9.0</version>
+
+                <configuration>
+                    <!-- Include ALL classes -->
+                    <targetClasses>
+                        <param>org.banking.*</param>
+                    </targetClasses>
+
+                    <targetTests>
+                        <param>org.banking.*</param>
+                    </targetTests>
+
+                    <mutators>
+                        <mutator>INVERT_NEGS</mutator>
+                        <mutator>CONDITIONALS_BOUNDARY</mutator>
+                        <mutator>RETURN_VALS</mutator>
+                        <mutator>INCREMENTS</mutator>
+                        <mutator>VOID_METHOD_CALLS</mutator>
+                        <mutator>MATH</mutator>
+                    </mutators>
+
+                    <threads>4</threads>
+                    <timeoutConst>3000</timeoutConst>
+
+                    <!-- No excluded classes now -->
+                    <excludedClasses/>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
