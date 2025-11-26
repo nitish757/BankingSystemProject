@@ -104,6 +104,7 @@ Team Members’ Contributions:
     - Implemented unit tests for:
         - AccountTest.java (account operations, deposits, withdrawals, transfers, interest, charges).
         - CustomerTest.java (customer account management, verification, balances).
+    - Automated CLI input–output testing and invalid input handling through dedicated BankingCLITest and BankingCLIInvalidInputTest to validate user interaction robustness.
     - Contributed to BankingServiceTest.java for service-level scenarios.
     - Analyzed mutation testing results (per-package breakdown, strengths, areas for improvement, operator effectiveness).
 
